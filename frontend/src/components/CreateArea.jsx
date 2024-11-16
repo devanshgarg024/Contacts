@@ -7,6 +7,9 @@ import CloseIcon from '@material-ui/icons/Close';
 
 function CreateArea(props) {
   const [isExpanded, setExpanded] = useState(false);
+  const [error1, setError1] = useState("*First_name or Ph. Number can not be empty!");
+  const [error2, setError2] = useState("*Ph. Number must contain only DIGITS!");
+  const [color, setColor] = useState('grey'); // default color
 
   const [note, setNote] = useState({
     first_name: "",
@@ -16,37 +19,45 @@ function CreateArea(props) {
     company: "",
     job_title: "",
   });
-
+  
+  function isOnlyDigits(str) {
+    const regex = /^\d+$/;
+    return regex.test(str);
+  }
   function handleChange(event) {
     const { name, value } = event.target;
-
     setNote((prevNote) => {
       return {
         ...prevNote,
         [name]: value,
       };
     });
+    if(note.first_name.length==0||note.contact_number.length==0){
+      setError1("*First_name or Ph. Number can not be empty!")
+
+    }
+    else setError1('');
+    if(!isOnlyDigits(note.contact_number)){
+      setError2("*Ph. Number must contain only DIGITS!")
+
+    }
+    else setError2('');
+
+  }
+  function wrongsubmission(){
+   setColor('red');
   }
 
-// function displayError(){
-
-// }
-// function displayOnlyDigitsError(){
-
-// }
-function isOnlyDigits(str) {
-  const regex = /^[0-9]+$/;  // This regex matches only strings that contain digits (0-9)
-  return regex.test(str);
-}
   function submitNote(event) {
-    // if(note.first_name===0||note.contact_number===0){
-    //   displayError;
-    //   return ;
-    // }
-    // if(!isOnlyDigits(note.contact_number)){
-    //   displayOnlyDigitsError;
-    //   return;
-    // }
+    if(note.first_name===0||note.contact_number===0){
+      wrongsubmission();
+      return;
+    }
+    if(!isOnlyDigits(note.contact_number)){
+      wrongsubmission();
+
+      return;
+    }
     props.onAdd(note);
     setNote({
       first_name: "",
@@ -74,6 +85,8 @@ function isOnlyDigits(str) {
         </Zoom>
         {isExpanded && (
           <div >
+            <p style={{ color }}>{error1}</p>
+            <p style={{ color }}>{error2}</p>
             <form className="create-note" >
             <Zoom className ="cross-button" in={true}>
           <Fab onClick={noexpand}>
@@ -86,21 +99,21 @@ function isOnlyDigits(str) {
               value={note.first_name}
               placeholder="First Name"
             />
-            <textarea
+            <input
           name="last_name"
           onClick={expand}
           onChange={handleChange}
           value={note.last_name}
           placeholder="Last name"
         />
-        <textarea
+        <input
           name="contact_number"
           onClick={expand}
           onChange={handleChange}
           value={note.contact_number}
           placeholder="Ph. Number"
         />
-        <textarea
+        <input
           name="email"
           type="email"
           onClick={expand}
@@ -108,14 +121,14 @@ function isOnlyDigits(str) {
           value={note.email}
           placeholder="Email"
         />        
-        <textarea
+        <input
         name="company"
         onClick={expand}
         onChange={handleChange}
         value={note.company}
         placeholder="Company"
         />        
-        <textarea
+        <input
         name="job_title"
         onClick={expand}
         onChange={handleChange}

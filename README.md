@@ -1,7 +1,7 @@
 # CONTACTS
 
 ## Description
-EduCollab is a web application aimed at enhancing the educational experience by providing a platform for students to collaborate, showcase their projects, and connect with peers. It facilitates sharing knowledge, receiving feedback, and exploring new opportunities in academia.
+The Contacts App is a simple yet efficient web application designed to manage and organize contact information. Whether for personal use or professional purposes, this app allows users to easily add, edit, view, and delete contacts, keeping all information in one place. Built with a user-friendly interface and backed by a robust PostgreSQL database, the app ensures smooth interactions and seamless data management.
 
 ## Tech Stack Used
 - **PostgreSQL:** A relational database used for managing structured data with support for advanced SQL queries and JSON/JSONB for semi-structured data storage. Used to store user data and project information efficiently.
@@ -47,8 +47,7 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
 
 2. **Clone the Repository:**
    ```sh
-   git clone https://github.com/deepakkumartripathi119/Educollab-MERN-Stack-project.git
-   cd Educollab
+   git clone https://github.com/devanshgarg024/Contacts.git
    ```
 
 3. **Backend Setup:**
@@ -72,20 +71,87 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
      ```
    - Start the React app:
      ```sh
-     npm run dev
+     npm start
      ```
    - The application should now be running on `http://localhost:3000`.
 
 5. **Environment Variables:**
    Make a file named .env in the backend folder, it's content should be:
    ```sh
-    MONGO_URI = "mongodb+srv://Nikhil:KritiDevAllTeam25@cluster0.mxindjp.mongodb.net/?retryWrites=true&w=majority"
-    CALLBACK_URL = "http://localhost:5500/auth/microsoft/redirect"
-    CLIENT_ID = "Your Microsoft Client ID"
-    CLIENT_SECRET = "Your Microsoft Client Secret"
-    GOOGLE_APPLICATIONS_CREDENTIALS='./edu-colab-kriti-firebase-adminsdk-7xiu0-3731e68b10.json'
-    CLOUD_NAME='du1g4j6f8'
-    CLOUD_API_KEY='775349273443457'
-    CLOUD_API_SECRET='LpwP-jH6DnhyvVieJ5nfbPKp2wI'
+      PG_USER="postgres"
+      PG_HOST="localhost"
+      PG_DATABASE="YOUR_DATABASE_NAME"
+      PG_PASSWORD="YOUR_DATABASE_PASSWORD"
+      PG_PORT=5432
     ```
 
+
+## Web Application Snippets
+
+
+1. Dashboard displaying all contacts<br>
+
+![homepage](./Snippets/Homepage.png)<br>
+
+2. Functionality to add more contacts <br>
+
+![AddPage](./Snippets/AddPage.png)<br>
+
+3. Shows error when the required criteria are not met.
+![ErrorPage](./Snippets/ErrorPage.png)
+
+4. Functionality to Edit.
+![EditPage](./Snippets/EditPage.png)
+
+
+# Why Use PostgreSQL?
+
+PostgreSQL is a powerful, open-source relational database management system (RDBMS) that provides a robust platform for managing structured data. Here’s why PostgreSQL is a great choice:
+
+## Benefits of Using PostgreSQL:
+- **Reliability & ACID Compliance:** PostgreSQL ensures that database transactions are reliable, ensuring data integrity even in the case of crashes.
+- **Scalability:** It can handle large volumes of data and is optimized for performance, making it suitable for both small applications and large-scale systems.
+- **Extensibility:** PostgreSQL supports extensions like PostGIS for geographic data, JSON support for document-style storage, and full-text search.
+- **SQL Standards Compliance:** It adheres closely to SQL standards, ensuring portability and ease of use for developers familiar with SQL.
+
+## Relational Databases and Tables:
+- **Structured Data:** In PostgreSQL, data is organized into tables, which makes it easy to manage structured information. Each table represents an entity (like "contacts" or "users") and contains columns representing the properties of that entity.
+- **Relationships Between Data:** Tables in a relational database can be linked through foreign keys, creating relationships between data. This ensures data consistency and prevents duplication.
+- **Efficient Querying:** SQL (Structured Query Language) allows for complex queries across multiple tables, which makes it easier to retrieve, update, and manipulate data.
+
+By using PostgreSQL, developers can organize data in a structured and consistent way, ensuring that the data is easy to query, update, and maintain, which is crucial for the long-term scalability and manageability of the application.
+
+# Challenges Faced During the Development of the Contacts App
+
+While developing the Contacts App, I encountered several challenges that required problem-solving and learning new concepts. Here are some of the key challenges faced:
+
+## 1. **Setting Up the PostgreSQL Database:**
+   - **Challenge:** Initially, I faced difficulties configuring and setting up PostgreSQL on my local environment. This involved ensuring the database was correctly installed and connected to the backend of the app.
+   - **Solution:** I researched the correct installation procedures for PostgreSQL and followed the necessary steps to set up the database and connect it with my app using the appropriate libraries like `pg` for Node.js.
+
+## 2. **Managing User Data Efficiently:**
+   - **Challenge:** Storing, updating, and deleting user contacts effectively in the database required careful management of data flow between the front-end and back-end.
+   - **Solution:** I created proper database schemas and used SQL queries to perform CRUD (Create, Read, Update, Delete) operations. This helped in maintaining data integrity and handling user interactions seamlessly.
+
+## 3. **Form Validation and Error Handling:**
+   - **Challenge:** Ensuring the accuracy of the data inputted by users was a major challenge. I needed to validate that the phone numbers contained only digits and that no fields were left empty.
+   - **Solution:** I implemented JavaScript validation on the front end and used conditional rendering to show error messages when the data was invalid. This also involved using React state management to dynamically handle validation errors.
+
+## 4. **User Interface Design:**
+   - **Challenge:** Designing an intuitive and responsive user interface that would allow users to easily add, update, or delete contacts without confusion.
+   - **Solution:** I utilized CSS for styling and React components for dynamic rendering. I also made sure that the layout was responsive to different screen sizes and that the UI provided clear feedback on the actions performed.
+
+## 5. **Ensuring Data Integrity:**
+   - **Challenge:** Handling edge cases, such as duplicate contact entries or invalid data, was another challenge, especially when interacting with the database.
+   - **Solution:** I implemented checks before adding or updating contacts in the database to ensure data consistency. For instance, I checked for existing records to avoid duplicates.
+
+## 6. **Deploying the Application:**
+   - **Challenge:** Deploying the app, especially with a PostgreSQL database, was challenging as I had to make sure the database connection worked correctly in a production environment.
+   - **Solution:** I used platforms like Heroku to deploy both the frontend and backend, while ensuring that the database was properly configured for remote access.
+
+## 7. **Managing State in React:**
+   - **Challenge:** Managing the form state and the list of contacts was difficult, especially when needing to update both simultaneously.
+   - **Solution:** I used React's state management effectively to handle updates to the form and the contact list, ensuring real-time synchronization of the UI with the data.
+
+## Conclusion:
+These challenges helped me gain a deeper understanding of PostgreSQL, React, and full-stack development. The process of overcoming these obstacles improved my problem-solving skills and my ability to develop efficient, reliable applications.
