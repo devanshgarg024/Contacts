@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/fetchContacts") // Adjust the URL if needed
+      .get("http://localhost:5000/api/contacts") // Adjust the URL if needed
       .then((response) => {
         setNotes(response.data); // Set the fetched data to notes
       })
@@ -19,7 +19,7 @@ function App() {
 
   function addNote(newNote) {
     axios
-      .post("http://localhost:5000/api/addContacts", newNote, {
+      .post("http://localhost:5000/api/contacts", newNote, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -33,10 +33,10 @@ function App() {
 
   function deleteNote(id) {
     axios
-    .delete(`http://localhost:5000/api/deleteContacts/${id}`)
+    .delete(`http://localhost:5000/api/contacts/${id}`)
     .then((response) => {
       axios
-      .get("http://localhost:5000/api/fetchContacts") // Adjust the URL if needed
+      .get("http://localhost:5000/api/contacts") // Adjust the URL if needed
       .then((response) => {
         setNotes(response.data); // Set the fetched data to notes
       })
@@ -47,11 +47,11 @@ function App() {
   }
   function editNote(id, editValue) {
     axios
-      .put(`http://localhost:5000/api/editContacts/${id}`, editValue)  // Use backticks for string interpolation
+      .put(`http://localhost:5000/api/contacts/${id}`, editValue)  // Use backticks for string interpolation
       .then((response) => {
         // After updating, fetch all notes again to refresh the list
         axios
-          .get("http://localhost:5000/api/fetchContacts")  // Adjust the URL if needed
+          .get("http://localhost:5000/api/contacts")  // Adjust the URL if needed
           .then((response) => {
             setNotes(response.data); // Set the fetched data to notes
           })

@@ -9,9 +9,9 @@ require("dotenv").config();
 
 app.use(cors()); 
 app.use(express.json());
-app.use("/api/addContacts", addnotesRoutes);
-app.use("/api/deleteContacts", deletenotesRoutes);
-app.use("/api/fetchContacts", fetchallcontacts);
-app.use("/api/editContacts", editnotes);
+app.use("/api/contacts", addnotesRoutes);
+app.use("/api/contacts", deletenotesRoutes);
+app.use("/api/contacts", fetchallcontacts);
+app.use("/api/contacts", editnotes);
 
 module.exports = app;
