@@ -59,15 +59,44 @@ function App() {
       })
       .catch((error) => console.error("Error editing:", error));  // Adjust error message to match function purpose
   }
+  let num=Number(0);
   
   return (
     <div>
       <Header />
       <CreateArea onAdd={addNote} />
-      {notes.map((noteItem, index) => {
+      <div className="excel-table">
+        <table>
+        <colgroup>
+        <col className="col-1" />
+      <col className="col-2" />
+      <col className="col-3" />
+      <col className="col-4" />
+      <col className="col-5" />
+      <col className="col-6" />
+      <col className="col-7" />
+      <col className="col-8" />
+      <col className="col-9" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>Job Title</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            {notes.map((noteItem, index) => {
+              num++;
         return (
           <Note
             key={index}
+            sno={num}
             id={noteItem.key}
             first_name={noteItem.first_name}
             last_name={noteItem.last_name}
@@ -80,6 +109,10 @@ function App() {
           />
         );
       })}
+
+        </table>
+    </div>
+
       <Footer />
     </div>
   );

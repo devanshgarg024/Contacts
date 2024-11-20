@@ -63,98 +63,104 @@ function Note(props) {
   }, []);
 
   return (
-    <div className="note" ref={noteRef}>
-      {!isEditable && (
-        <div>
-          <h1>{props.first_name}</h1>
-          <p>{props.last_name}</p>
-          <p>{props.contact_number}</p>
-          <p>{props.email}</p>
-          <p>{props.company}</p>
-          <p>{props.job_title}</p>
-        </div>
+    <tbody className="note" ref={noteRef}>
+
+    {!isEditable && (
+        <tr >
+                    <th>{props.sno}</th>
+                    <td >{props.first_name}</td>
+                    <td>{props.last_name}</td>
+                    <td>{props.contact_number}</td>
+                    <td>{props.email}</td>
+                    <td>{props.company}</td>
+                    <td>{props.job_title}</td>
+                    <td >
+                    <button onClick={handleEdit}>
+            <EditIcon />
+          </button></td>
+          <td>
+                    <button onClick={handleDelete}>
+                <DeleteIcon />
+               </button>
+                    </td>
+        </tr>
       )}
 
       {isEditable && (
-        <div>
-          <p>First Name</p>
-          <input
+                  <tr>
+                    <th>{props.sno}</th>
+                    <td>
+                    <input
             type="text"
             onChange={handleChange}
             value={note.first_name}
             name="first_name"
             placeholder="First Name"
-          />
-
-          <p>Last Name</p>
-          <input
+            />
+                    </td>
+                    <td>
+                    <input
             type="text"
             onChange={handleChange}
             value={note.last_name}
             name="last_name"
             placeholder="Last Name"
-          />
-
-          <p>Contact Number</p>
-          <input
+            />
+                    </td>
+                    <td>
+                    <input
             type="text"
             onChange={handleChange}
             value={note.contact_number}
             name="contact_number"
             placeholder="Contact Number"
-          />
-
-          <p>Email</p>
-          <input
+            />
+                    </td>
+                    <td>
+                    <input
             type="email"
             onChange={handleChange}
             value={note.email}
             name="email"
             placeholder="Email"
-          />
-
-          <p>Company</p>
+            />
+                    </td>
+                    <td>
+                      
           <input
             type="text"
             onChange={handleChange}
             value={note.company}
             name="company"
             placeholder="Company"
-          />
-
-          <p>Job Title</p>
+            />
+                    </td>
+                    <td>
+                      
           <input
             type="text"
             onChange={handleChange}
             value={note.job_title}
             name="job_title"
             placeholder="Job Title"
-          />
-
-          <button onClick={handleSave}>
+            />
+                    </td>
+                    <td  >
+                    <button onClick={handleSave}>
             <SaveIcon />
           </button>
-          <button onClick={handleDelete}>
-      <DeleteIcon />
-    </button>
-        </div>
+                    </td>
+                    <td>
+                    <button onClick={handleDelete}>
+                <DeleteIcon />
+               </button>
+                    </td>
+                </tr>
       )}
-      {
-        !isEditable&&(
-            <div>
 
-      <button onClick={handleEdit}>
-        <EditIcon />
-      </button>
-      <button onClick={handleDelete}>
-      <DeleteIcon />
-    </button>
-            </div>
-        )
-      }
+</tbody>
 
-
-    </div>
+  
   );
 }
 

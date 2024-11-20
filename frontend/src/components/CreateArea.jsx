@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useRef } from "react";
+import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
@@ -32,7 +32,7 @@ function CreateArea(props) {
         [name]: value,
       };
     });
-    if(note.first_name.length==0||note.contact_number.length==0){
+    if(note.first_name.length===0||note.contact_number.length===0){
       setError1("*First_name or Ph. Number can not be empty!")
 
     }
@@ -78,11 +78,15 @@ function CreateArea(props) {
   }
   return (
     <div >
-        <Zoom in={!isExpanded}>
-          <Fab onClick={expand}>
-            <AddIcon />
-          </Fab>
-        </Zoom>
+      {!isExpanded &&
+      <div className ="addButton">
+      <Zoom  in={!isExpanded}>
+        <Fab onClick={expand}>
+          <AddIcon />
+        </Fab>
+      </Zoom>
+    </div>}
+      
         {isExpanded && (
           <div >
             <p style={{ color }}>{error1}</p>
