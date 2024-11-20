@@ -43,14 +43,30 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
 
 1. **Prerequisites:**
    - Node.js and npm installed.
-   - PostgreSQL set up either locally or in the cloud.
+   - PostgreSQL [installed](https://www.postgresql.org/download/) locally.
 
 2. **Clone the Repository:**
    ```sh
    git clone https://github.com/devanshgarg024/Contacts.git
    ```
 
-3. **Backend Setup:**
+3. **Create a Database**:
+   - Open your terminal and log in to PostgreSQL using the command:
+     ```bash
+     psql -U postgres
+     ```
+   - Create a new database for your project:
+     ```sql
+     CREATE DATABASE your_project_name;
+     ```
+
+4. **Create the Required Tables**:
+   - Run the following command to load the SQL file in backend folder that creates the tables:
+     ```bash
+     \i /path/to/backend/setup.sql
+     ```
+
+5. **Backend Setup:**
    - Navigate to the backend directory.
    - Install dependencies:
      ```sh
@@ -62,7 +78,7 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
      npm start
      ```
 
-4. **Frontend Setup:**
+6. **Frontend Setup:**
    - Navigate to the frontend directory.
    - Install dependencies:
      ```sh
@@ -75,7 +91,7 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
      ```
    - The application should now be running on `http://localhost:3000`.
 
-5. **Environment Variables:**
+7. **Environment Variables:**
    Make a file named .env in the backend folder, it's content should be:
    ```sh
       PG_USER="postgres"
