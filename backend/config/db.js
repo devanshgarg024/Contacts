@@ -3,6 +3,7 @@ require('dotenv').config();
 
 // Connection string for Render PostgreSQL database
 const connectionString = process.env.PG_EXTERNAL_LINK;
+console.log("PG_EXTERNAL_LINK:", process.env.PG_EXTERNAL_LINK);
 
 const pool = new Pool({
   connectionString: connectionString,
