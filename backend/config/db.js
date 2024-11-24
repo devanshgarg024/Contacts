@@ -1,13 +1,14 @@
-// server/config/db.js
-const { Pool } = require("pg");
-require("dotenv").config();
+const { Pool } = require('pg');
+require('dotenv').config();
+
+// Connection string for Render PostgreSQL database
+const connectionString = process.env.PG_EXTERNAL_LINK;
 
 const pool = new Pool({
-  user: process.env.PG_USER,
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  password: process.env.PG_PASSWORD,
-  port: process.env.PG_PORT,
+  connectionString: connectionString,
+  ssl: {
+    rejectUnauthorized: false // Disable SSL verification (required for Render's SSL)
+  }
 });
 
 module.exports = pool;

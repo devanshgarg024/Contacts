@@ -43,30 +43,13 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
 
 1. **Prerequisites:**
    - Node.js and npm installed.
-   - PostgreSQL [installed](https://www.postgresql.org/download/) locally.
 
 2. **Clone the Repository:**
    ```sh
    git clone https://github.com/devanshgarg024/Contacts.git
    ```
 
-3. **Create a Database**:
-   - Open your terminal and log in to PostgreSQL using the command:
-     ```bash
-     psql -U postgres
-     ```
-   - Create a new database for your project:
-     ```sql
-     CREATE DATABASE your_project_name;
-     ```
-
-4. **Create the Required Tables**:
-   - Run the following command to load the SQL file in backend folder that creates the tables:
-     ```bash
-     \i /path/to/backend/setup.sql
-     ```
-
-5. **Backend Setup:**
+3. **Backend Setup:**
    - Navigate to the backend directory.
    - Install dependencies:
      ```sh
@@ -78,7 +61,7 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
      npm start
      ```
 
-6. **Frontend Setup:**
+4. **Frontend Setup:**
    - Navigate to the frontend directory.
    - Install dependencies:
      ```sh
@@ -91,14 +74,11 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
      ```
    - The application should now be running on `http://localhost:3000`.
 
-7. **Environment Variables:**
+5. **Environment Variables:**
    Make a file named .env in the backend folder, it's content should be:
    ```sh
-      PG_USER="postgres"
-      PG_HOST="localhost"
-      PG_DATABASE="YOUR_DATABASE_NAME"
-      PG_PASSWORD="YOUR_DATABASE_PASSWORD"
-      PG_PORT=5432
+   PG_External_Link="postgresql://devansh:I3bUvB5C1JJSb7x3iF3l8AyqaER7lBnq@dpg-ct15f08gph6c73bg2dbg-a.singapore-postgres.render.com/firstcloudposrgres"
+
     ```
 
 
