@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -8,9 +8,12 @@ import axios from "axios";
 function App() {
   const [notes, setNotes] = useState([]);
 
+  // Backend URL from environment variable
+  const backendUrl = process.env.REACT_APP_LINK_TO_BACKEND || 'http://localhost:5000'; // Fallback to localhost if the env variable is not set
+
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/contacts") // Adjust the URL if needed
+      .get(`${backendUrl}/api/contacts`)
       .then((response) => {
         setNotes(response.data); // Set the fetched data to notes
       })
@@ -19,13 +22,12 @@ function App() {
 
   function addNote(newNote) {
     axios
-      .post("http://localhost:5000/api/contacts", newNote, {
+      .post(`${backendUrl}/api/contacts`, newNote, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((response) => {
-        // The response data from axios is in `response.data`
         setNotes((prevNotes) => [...prevNotes, response.data]);
       })
       .catch((error) => console.error("Error Adding:", error));
@@ -33,33 +35,35 @@ function App() {
 
   function deleteNote(id) {
     axios
-    .delete(`http://localhost:5000/api/contacts/${id}`)
-    .then((response) => {
-      axios
-      .get("http://localhost:5000/api/contacts") // Adjust the URL if needed
-      .then((response) => {
-        setNotes(response.data); // Set the fetched data to notes
+      .delete(`${backendUrl}/api/contacts/${id}`)
+      .then(() => {
+        // Fetch the updated list after deletion
+        axios
+          .get(`${backendUrl}/api/contacts`)
+          .then((response) => {
+            setNotes(response.data); // Update the state with new data
+          })
+          .catch((error) => console.error("Error fetching notes:", error));
       })
-      .catch((error) => console.error("Error fetching notes:", error));
-    })
-    .catch((error) => console.error("Error Deleting:", error));
-
+      .catch((error) => console.error("Error Deleting:", error));
   }
+
   function editNote(id, editValue) {
     axios
-      .put(`http://localhost:5000/api/contacts/${id}`, editValue)  // Use backticks for string interpolation
-      .then((response) => {
+      .put(`${backendUrl}/api/contacts/${id}`, editValue)
+      .then(() => {
         // After updating, fetch all notes again to refresh the list
         axios
-          .get("http://localhost:5000/api/contacts")  // Adjust the URL if needed
+          .get(`${backendUrl}/api/contacts`)
           .then((response) => {
             setNotes(response.data); // Set the fetched data to notes
           })
           .catch((error) => console.error("Error fetching notes:", error));
       })
-      .catch((error) => console.error("Error editing:", error));  // Adjust error message to match function purpose
+      .catch((error) => console.error("Error editing:", error));
   }
-  let num=Number(0);
+
+  let num = 0;
   
   return (
     <div>
