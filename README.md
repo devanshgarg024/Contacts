@@ -1,5 +1,8 @@
 # CONTACTS
 
+## Deployed Link
+[Click here to access the Contacts App](https://contacts-3-47av.onrender.com/)
+
 ## Description
 The Contacts App is a simple yet efficient web application designed to manage and organize contact information. Whether for personal use or professional purposes, this app allows users to easily add, edit, view, and delete contacts, keeping all information in one place. Built with a user-friendly interface and backed by a robust PostgreSQL database, the app ensures smooth interactions and seamless data management.
 
@@ -34,7 +37,6 @@ The Contacts App is a simple yet efficient web application designed to manage an
 
 4. **Delete Contacts**  
    - Users can remove unwanted contacts from the database with a simple delete action.
-
 
 ## User Interface
 The user interface is designed to be intuitive and user-friendly, emphasizing ease of navigation and accessibility. It includes responsive design for compatibility with various devices and screen sizes.
@@ -75,15 +77,12 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
    - The application should now be running on `http://localhost:3000`.
 
 5. **Environment Variables:**
-   Make a file named .env in the backend folder, it's content should be:
+   Make a file named .env in the backend folder, its content should be:
    ```sh
    PG_External_Link="postgresql://devansh:I3bUvB5C1JJSb7x3iF3l8AyqaER7lBnq@dpg-ct15f08gph6c73bg2dbg-a.singapore-postgres.render.com/firstcloudposrgres"
-
-    ```
-
+   ```
 
 ## Web Application Snippets
-
 
 1. Dashboard displaying all contacts<br>
 
@@ -98,7 +97,6 @@ The user interface is designed to be intuitive and user-friendly, emphasizing ea
 
 4. Functionality to Edit.
 ![EditPage](./Snippets/EditPage.png)
-
 
 # Why Use PostgreSQL?
 
@@ -137,17 +135,6 @@ While developing the Contacts App, I encountered several challenges that require
    - **Challenge:** Designing an intuitive and responsive user interface that would allow users to easily add, update, or delete contacts without confusion.
    - **Solution:** I utilized CSS for styling and React components for dynamic rendering. I also made sure that the layout was responsive to different screen sizes and that the UI provided clear feedback on the actions performed.
 
-## 5. **Ensuring Data Integrity:**
-   - **Challenge:** Handling edge cases, such as duplicate contact entries or invalid data, was another challenge, especially when interacting with the database.
-   - **Solution:** I implemented checks before adding or updating contacts in the database to ensure data consistency. For instance, I checked for existing records to avoid duplicates.
-
-## 6. **Deploying the Application:**
-   - **Challenge:** Deploying the app, especially with a PostgreSQL database, was challenging as I had to make sure the database connection worked correctly in a production environment.
-   - **Solution:** I used platforms like Heroku to deploy both the frontend and backend, while ensuring that the database was properly configured for remote access.
-
-## 7. **Managing State in React:**
-   - **Challenge:** Managing the form state and the list of contacts was difficult, especially when needing to update both simultaneously.
-   - **Solution:** I used React's state management effectively to handle updates to the form and the contact list, ensuring real-time synchronization of the UI with the data.
-
 ## Conclusion:
 These challenges helped me gain a deeper understanding of PostgreSQL, React, and full-stack development. The process of overcoming these obstacles improved my problem-solving skills and my ability to develop efficient, reliable applications.
+
